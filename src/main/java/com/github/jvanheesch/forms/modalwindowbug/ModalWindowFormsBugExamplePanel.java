@@ -54,12 +54,30 @@ public class ModalWindowFormsBugExamplePanel extends Panel {
         DropDownChoice<String> dropDownChoice = new DropDownChoice<>("dropDownChoice", Model.of("initValueDropdown"), Model.ofList(Arrays.asList("noValueIsSelectedCheckHtml", "initValueDropdown")));
         form.add(dropDownChoice);
 
-
         form.add(new AjaxSubmitLink("submitOuterForm") {
             private static final long serialVersionUID = 5188134882521490454L;
 
             {
                 this.setBody(Model.of("submitOuterForm"));
+            }
+        });
+
+        Form<?> nestedForm = new Form<Void>("nestedForm") {
+            private static final long serialVersionUID = 4754278116243135912L;
+
+            @Override
+            protected void onSubmit() {
+                super.onSubmit();
+
+                LOG.info("Submitted nestedForm");
+            }
+        };
+        form.add(nestedForm);
+
+        nestedForm.add(new AjaxSubmitLink("submitNestedForm") {
+            private static final long serialVersionUID = 5188134882521490454L;
+            {
+                this.setBody(Model.of("submitNestedFormToUpdateRawInputOfOuterForm"));
             }
         });
 
