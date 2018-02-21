@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
+<body>
+<wicket:panel>
+    <p>
+        The specification of wicket nested <b>form submission</b> can be found <a href="https://cwiki.apache.org/confluence/display/WICKET/Nested+Forms">here</a>.<br>
+        This example here is about <b>raw input</b> in the context of nested forms. <br>
+        Wicket has <a href="http://apache-wicket.1842946.n4.nabble.com/Quetsion-to-nesting-Forms-and-reflecting-states-of-FormComponents-after-ajax-refreshs-tp4672670p4672679.html">unintuitive behavior</a> in this context.<br>
+        While nested form submission does not trigger outer form submission, it does update the outer form's raw input. <br>
+        This can be verified by the example below.
+    </p>
+    <form wicket:id="outerForm" style="border: solid #F00; width: 500px;">
+        <span>outer form</span>
+        <a wicket:id="clearOuterFormInput">clearOuterFormInputAndRefresh</a>
+        <div>
+            <input wicket:id="textField"/>
+            <button wicket:id="submitOuterForm"></button>
+        </div>
+        <div style="border: solid #00F;">
+            <span>nested form:</span>
+            <form wicket:id="nestedForm">
+                <input wicket:id="nestedTextField"/>
+                <button wicket:id="submitNestedForm"></button>
+            </form>
+        </div>
+    </form>
+</wicket:panel>
+</body>
+</html>
