@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
+<body>
+<wicket:panel>
+    <p>
+        When a form inside a modal window inside a form is submitted, the outer form incorrectly loses its raw input. <br>
+        This becomes a significant problem for a standard dropdown choice, for which isInputNullable() returns true.
+    </p>
+    <form wicket:id="outerForm" style="border: solid #F00; width: 500px;">
+        <span>outer form</span>
+        <a wicket:id="clearOuterFormInput">clearOuterFormInputAndRefresh</a>
+        <div>
+            <input wicket:id="textField"/>
+            <select wicket:id="dropDownChoice"></select>
+            <button wicket:id="submitOuterForm"></button>
+        </div>
+        <div wicket:id="modalWindow" style="border: solid #00F;"></div>
+        <a wicket:id="showModalWindow"></a>
+    </form>
+</wicket:panel>
+</body>
+</html>
